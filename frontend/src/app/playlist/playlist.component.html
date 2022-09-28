@@ -1,0 +1,16 @@
+<ng-container *ngIf="status$ | async as status">
+<ng-container *ngIf="playlist$ | async as playlist">
+    <div class="card">
+        <div *ngFor="let song of playlist" class="card-block">
+            <h5 class="card-title" style="cursor: pointer;" (click)="play(song.pos)">
+                <clr-icon
+                    shape="play"
+                    class="is-solid"
+                    [style.visibility]="(song.id == status.currentsong?.id && status.status?.state == 'play') ? 'visible': 'hidden'"
+                ></clr-icon>
+                {{song.artist}} - {{song.title}}
+            </h5>
+        </div>
+    </div>
+</ng-container>
+</ng-container>

@@ -1,0 +1,15 @@
+<div class="main-container">
+  <div class="content-container">
+    <clr-vertical-nav>
+      <a clrVerticalNavLink routerLink="./artists" routerLinkActive="active">Library</a>
+      <a clrVerticalNavLink routerLink="./playlist" routerLinkActive="active">Now playing</a>
+      <a clrVerticalNavLink routerLink="./playlists" routerLinkActive="active">Playlists</a>
+    </clr-vertical-nav>
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <header class="header header-6">
+    <app-control-bar></app-control-bar>
+  </header>
+</div>

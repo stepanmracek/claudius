@@ -1,0 +1,23 @@
+<ng-container *ngIf="albums">
+    <h1>{{albums.artist}}</h1>
+
+    <div style="display: flex;flex-direction: row;flex-wrap: wrap; align-items: flex-start;">
+        <ng-container *ngFor="let album of albums.albums">
+            <div class="card" style="max-width: 256px; margin-right: 20px;">
+                <div class="card-img">
+                    <img [src]="covers[album.album] | async">
+                </div>
+                <div class="card-block">
+                    <h4 class="card-title">{{album.album}}</h4>
+                    <p class="card-text">
+                        {{album.year}}
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <a (click)="play(albums.artist, album.album)" class="btn btn-sm btn-link">Play</a>
+                    <a (click)="enqueue(albums.artist, album.album)" class="btn btn-sm btn-link">Enqueue</a>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</ng-container>

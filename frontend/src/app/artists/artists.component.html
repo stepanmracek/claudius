@@ -1,0 +1,10 @@
+<ng-container *ngIf="artists$ | async as artists">
+    <ng-container *ngFor="let letter of artists | keyvalue">
+        <h1>{{letter.key}}</h1>
+        <div class="card">
+            <div *ngFor="let artist of letter.value" class="card-block">
+                <h5 class="card-title" style="cursor: pointer;" (click)="goTo(artist)">{{artist}}</h5>
+            </div>
+        </div>
+    </ng-container>
+</ng-container>

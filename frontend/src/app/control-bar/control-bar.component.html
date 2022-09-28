@@ -1,0 +1,30 @@
+<ng-container *ngIf="mpd$ | async as mpd">
+    <ng-container *ngIf="mpd.status">
+        <div class="header-nav">
+            <a href="javascript://" class="nav-link nav-icon" aria-label="prev">
+                <clr-icon shape="step-forward" class="is-solid" style="transform: translate(-50%,-50%) scaleX(-1);"></clr-icon>
+            </a>
+            <a href="javascript://" class="nav-link nav-icon" aria-label="play">
+                <clr-icon shape="play" size="36" class="is-solid"></clr-icon>
+            </a>
+            <a href="javascript://" class="nav-link nav-icon" aria-label="next">
+                <clr-icon shape="step-forward" class="is-solid"></clr-icon>
+            </a>
+            <div *ngIf="mpd.currentsong" style="align-self: center; margin-left: 20px;">
+                {{mpd.currentsong.artist}}<br/>
+                <b>{{mpd.currentsong.title}}</b>
+            </div>
+            <ng-container *ngIf="mpd.status.duration && mpd.status.elapsed">
+                <progress
+                    style="margin-left: 20px; margin-left: 20px;"
+                    progress [max]="mpd.status.duration"
+                    [value]="mpd.status.elapsed">
+                </progress>
+                <div style="align-self: center; margin-left: 20px;">
+                    {{mpd.status.elapsed * 1000 | date:'mm:ss'}} / {{mpd.status.duration * 1000 | date:'mm:ss'}}
+                </div>
+                
+            </ng-container>
+        </div>
+    </ng-container>
+</ng-container>
