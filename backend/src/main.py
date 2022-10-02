@@ -78,7 +78,7 @@ async def get_artists():
             return None
 
 
-@app.get("/mpd/albums/{artist}")
+@app.get("/mpd/albums")
 async def get_albums(artist: str):
     async with mpd_lock:
         try:
@@ -89,7 +89,7 @@ async def get_albums(artist: str):
             return None
 
 
-@app.get("/mpd/songs/{artist}/{album}")
+@app.get("/mpd/songs")
 async def get_songs(artist: str, album: str):
     async with mpd_lock:
         try:

@@ -41,7 +41,7 @@ export class MpdRestService {
 
   getAlbums(artist: string) {
     return this.http.get<{ date: string, album: string[] | string }[]>(
-      REST_URL + "albums/" + artist
+      REST_URL + `albums?artist=${encodeURIComponent(artist)}`
     ).pipe(
       map(response => {
         let result: ArtistAlbums = { "artist": artist, albums: [] }
@@ -68,7 +68,7 @@ export class MpdRestService {
 
   getSongs(artist: string, album: string) {
     return this.http.get<Song[]>(
-      REST_URL + `songs/${artist}/${album}`
+      REST_URL + `songs?artist=${encodeURIComponent(artist)}&album=${encodeURIComponent(album)}`
     )
   }
 

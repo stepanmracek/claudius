@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Observable, Observer, AsyncSubject } from 'rxjs';
+import { Observable, Observer, AsyncSubject, BehaviorSubject } from 'rxjs';
 import { Subject } from 'rxjs';
 
 const WS_URL = "ws://localhost:8000/mpd/ws";
@@ -51,7 +51,7 @@ export class MpdWebsocketService {
       this.connected$.next(true);
       this.connected$.complete()
     }
-    this.mpdStatus$ = new Subject<Mpd | null>()
+    this.mpdStatus$ = new BehaviorSubject<Mpd | null>(null)
     this.ws.onmessage = (messageEvent: MessageEvent<string>) => {
       this.mpdStatus$.next(this.parseStatus(messageEvent.data))
     }
